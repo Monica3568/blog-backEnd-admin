@@ -1,0 +1,21 @@
+server:
+  port: 9996
+
+spring:
+  datasource:
+    url: jdbc:mysql://124.223.14.20:3306/blog?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 5201314...
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    port: 6379
+    host: 124.223.14.20
+    password: 5201314...
+    database: 0
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.nsu.pojo
+
+
+
