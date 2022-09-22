@@ -2,12 +2,10 @@ package com.nsu.mapper;
 
 import com.nsu.pojo.SysUser;
 
-import java.util.List;
-
 /**
  * @Author Monica
- * @Date 2022/9/16 15:41
+ * @Date 2022/9/22 14:03
  **/
 public interface SysUserMapper {
-    List<SysUser> getUserList();
+    SysUser selectUserByUsername(String username);
 }

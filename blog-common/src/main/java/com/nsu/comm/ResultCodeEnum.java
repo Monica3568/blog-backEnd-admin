@@ -5,6 +5,8 @@ public enum ResultCodeEnum {
     SUCCESS(0,"成功"),
     Fail(-1,"失败"),
 
+    UserError(-1004,"用户名或者密码错误"),
+
     NoLogin(-1001,"未登录"),
     UnAuth(-1002,"无权限查看此页面，请联系管理员"),
     NeedAuthValidation(-1003, "当前请求需要用户验证。"),

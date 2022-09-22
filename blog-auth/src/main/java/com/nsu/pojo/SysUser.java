@@ -3,7 +3,6 @@ package com.nsu.pojo;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @Author Monica
@@ -11,8 +10,12 @@ import java.util.Date;
  **/
 @Data
 public class SysUser implements Serializable {
-    private String userName;
+
+    private static final long serialVersionUID = 1L;
+
+    private Integer id;
+
+    private String username;
+
     private String password;
-    private Date createTime;
-    private Date updateTime;
 }
