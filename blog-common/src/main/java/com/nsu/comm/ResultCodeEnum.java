@@ -5,18 +5,10 @@ public enum ResultCodeEnum {
     SUCCESS(0,"成功"),
     Fail(-1,"失败"),
 
-    UserError(-1004,"用户名或者密码错误"),
+    AuthFailed(-1004,"认证失败"),
+    NoAuth(-1002,"无权限"),
 
-    NoLogin(-1001,"未登录"),
-    UnAuth(-1002,"无权限查看此页面，请联系管理员"),
-    NeedAuthValidation(-1003, "当前请求需要用户验证。"),
-
-    ZuulException(-1101,"服务异常"),
-
-    SystemException(-2001,"系统异常"),
-    DBException(-2002,"数据库操作异常"),
-
-    ParamException(-3001,"参数验证错误");
+    NoLogin(-1001,"未登录");
 
     //自定义信息 从-4001开始
 

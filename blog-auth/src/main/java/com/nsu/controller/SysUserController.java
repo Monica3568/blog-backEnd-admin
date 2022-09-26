@@ -20,11 +20,11 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
-    @PostMapping("/login")
-    public Response loginUser(@RequestBody @Validated SysUser sysUser){
-
-        return new Response().success(sysUserService.loginUser(sysUser));
-    }
+//    @PostMapping("/login")
+//    public Response loginUser(@RequestBody @Validated SysUser sysUser){
+//
+//        return new Response().success(sysUserService.loginUser(sysUser));
+//    }
 
     @PostMapping("/register")
     public Response registerUser(SysUser sysUser){

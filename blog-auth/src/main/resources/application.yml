@@ -1,28 +1,27 @@
 server:
   port: 9996
-
 spring:
   datasource:
-    url: jdbc:mysql://124.223.14.20:3306/blog?characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://124.223.14.20:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: 5201314...
-    driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     port: 6379
-    host: 124.223.14.20
     password: 5201314...
-    database: 0
-    jackson:
-      date-format: yyyy-MM-dd HH:mm:ss
-      time-zone: GMT+8
-      serialization:
-        write-dates-as-timestamps: false
+    host: 124.223.14.20
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.nsu.pojo
-security:
-  jwt:
-    secretKey: whatever
+  mapper-locations: classpath:mapper/*.xml
 
-
+jwt:
+  #请求头
+  header: Authorization
+  #盐值
+  base64-secret: monica
+  #过期时间
+  token-validity-in-seconds: 3600
+logging:
+  level:
+    root: debug
