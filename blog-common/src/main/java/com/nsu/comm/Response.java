@@ -45,7 +45,7 @@ public class Response {
     }
 
     public Response error(String msg) {
-        this.code = ResultCodeEnum.Fail.getCode();
+        this.code = ResultCodeEnum.COMMON_FAIL.getCode();
         this.msg = msg;
         return this;
     }
