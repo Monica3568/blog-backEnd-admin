@@ -41,9 +41,9 @@ public class JwtAuthenticationSuccessHandler implements AuthenticationSuccessHan
         sysUser.setLastLoginTime(new Date());
         sysUser.setUpdateTime(new Date());
         sysUser.setUpdateUser(sysUser.getId());
-        userMapper.update(sysUser.getId());
+        userMapper.update(sysUser);
 
-        // 根据用户的id和account生成token并返回
+        // 根据用户的id和username 生成token并返回
         String jwtToken = JwtUtils.getJwtToken(sysUser.getId().toString(), sysUser.getUsername());
         Map<String,String> results = new HashMap<>();
         results.put("token",jwtToken);

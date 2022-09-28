@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2022/9/22 11:38
  **/
 @RestController
-@RequestMapping("/sysUser")
+//@RequestMapping("/sysUser")
 public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
@@ -38,4 +38,9 @@ public class SysUserController {
         return "我是钟伟的爹";
     }
 
+    @PostMapping("/getUser")
+    public String getUser(){
+
+        return "我是钟伟的爹";
+    }
 }

@@ -8,17 +8,17 @@
         <result property="nickname" column="NICKNAME" jdbcType="VARCHAR"/>
         <result property="password" column="PASSWORD" jdbcType="VARCHAR"/>
         <result property="lastLoginTime" column="LAST_LOGIN_TIME" jdbcType="TIMESTAMP"/>
-        <result property="enabled" column="ENABLED" jdbcType="INTEGER"/>
-        <result property="notExpired" column="NOT_EXPIRED" jdbcType="INTEGER"/>
-        <result property="accountNotLocked" column="ACCOUNT_NOT_LOCKED" jdbcType="INTEGER"/>
-        <result property="credentialsNotExpired" column="CREDENTIALS_NOT_EXPIRED" jdbcType="INTEGER"/>
+<!--        <result property="enabled" column="ENABLED" jdbcType="INTEGER"/>-->
+<!--        <result property="notExpired" column="NOT_EXPIRED" jdbcType="INTEGER"/>-->
+<!--        <result property="accountNotLocked" column="ACCOUNT_NOT_LOCKED" jdbcType="INTEGER"/>-->
+<!--        <result property="credentialsNotExpired" column="CREDENTIALS_NOT_EXPIRED" jdbcType="INTEGER"/>-->
         <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
         <result property="createUser" column="CREATE_USER" jdbcType="INTEGER"/>
         <result property="updateUser" column="UPDATE_USER" jdbcType="INTEGER"/>
     </resultMap>
 
-    <select id="selectUserByUsername" resultType="com.nsu.pojo.SysUser">
+    <select id="selectUserByUsername" resultMap="SysUserMap">
         select * from sys_user where username = #{username}
     </select>
 
@@ -26,11 +26,11 @@
     <update id="update">
         update sys_user
         <set>
-            <if test="account != null and account != ''">
-                account = #{account},
+            <if test="username != null and username != ''">
+                username = #{username},
             </if>
-            <if test="userName != null and userName != ''">
-                user_name = #{userName},
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname},
             </if>
             <if test="password != null and password != ''">
                 password = #{password},
@@ -38,18 +38,18 @@
             <if test="lastLoginTime != null">
                 last_login_time = #{lastLoginTime},
             </if>
-            <if test="enabled != null">
-                enabled = #{enabled},
-            </if>
-            <if test="accountNonExpired != null">
-                account_non_expired = #{accountNonExpired},
-            </if>
-            <if test="accountNonLocked != null">
-                account_non_locked = #{accountNonLocked},
-            </if>
-            <if test="credentialsNonExpired != null">
-                credentials_non_expired = #{credentialsNonExpired},
-            </if>
+<!--            <if test="enabled != null">-->
+<!--                enabled = #{enabled},-->
+<!--            </if>-->
+<!--            <if test="accountNonExpired != null">-->
+<!--                not_expired = #{notExpired},-->
+<!--            </if>-->
+<!--            <if test="accountNonLocked != null">-->
+<!--                account_not_locked = #{accountNotLocked},-->
+<!--            </if>-->
+<!--            <if test="credentialsNonExpired != null">-->
+<!--                credentials_not_expired = #{credentialsNotExpired},-->
+<!--            </if>-->
             <if test="createTime != null">
                 create_time = #{createTime},
             </if>

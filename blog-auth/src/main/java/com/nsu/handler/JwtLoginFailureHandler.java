@@ -44,8 +44,7 @@ public class JwtLoginFailureHandler implements AuthenticationFailureHandler {
             res.setCode(ResultCodeEnum.USER_ACCOUNT_LOCKED.getCode());
             res.setMsg(ResultCodeEnum.USER_ACCOUNT_LOCKED.getMsg());
         } else if (e instanceof InternalAuthenticationServiceException) {
-            //用户不存在
-            res.setCode(ResultCodeEnum.USER_ACCOUNT_NOT_EXIST.getCode());
+            //用户不存在res.setCode(ResultCodeEnum.USER_ACCOUNT_NOT_EXIST.getCode());
             res.setMsg(ResultCodeEnum.USER_ACCOUNT_NOT_EXIST.getMsg());
         } else {
             //其他错误

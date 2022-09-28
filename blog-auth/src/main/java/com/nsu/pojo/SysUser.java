@@ -33,25 +33,25 @@ public class SysUser implements Serializable {
      * 上次登录时间
      */
     private Date lastLoginTime;
-    /**
-     * 账号是否可用。默认为1（可用）
-     */
-    private Boolean enabled;
-
-    /**
-     * 是否过期。默认为1（没有过期）
-     */
-    private Boolean notExpired;
-
-    /**
-     * 账号是否锁定。默认为1（没有锁定）
-     */
-    private Boolean accountNotLocked;
-
-    /**
-     * 证书（密码）是否过期。默认为1（没有过期）
-     */
-    private Boolean credentialsNotExpired;
+//    /**
+//     * 账号是否可用。默认为1（可用）
+//     */
+//    private Boolean enabled;
+//
+//    /**
+//     * 是否过期。默认为1（没有过期）
+//     */
+//    private Boolean notExpired;
+//
+//    /**
+//     * 账号是否锁定。默认为1（没有锁定）
+//     */
+//    private Boolean accountNotLocked;
+//
+//    /**
+//     * 证书（密码）是否过期。默认为1（没有过期）
+//     */
+//    private Boolean credentialsNotExpired;
 
     /**
      * 创建时间

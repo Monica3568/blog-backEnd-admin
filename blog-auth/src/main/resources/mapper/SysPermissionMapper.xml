@@ -4,11 +4,11 @@
 
     <resultMap type="com.nsu.pojo.SysPermission" id="SysPermissionMap">
         <result property="id" column="ID" jdbcType="INTEGER"/>
-        <result property="permissionCode" column="permission_code" jdbcType="VARCHAR"/>
-        <result property="permissionName" column="permission_name" jdbcType="VARCHAR"/>
+        <result property="permissionCode" column="PERMISSION_CODE" jdbcType="VARCHAR"/>
+        <result property="permissionName" column="PERMISSION_NAME" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="selectListByUser" resultType="com.nsu.pojo.SysPermission">
+    <select id="selectListByUser" resultMap="SysPermissionMap">
         SELECT
         p.*
         FROM
@@ -24,7 +24,7 @@
         WHERE u.id = #{userId}
     </select>
 
-    <select id="selectListByPath" resultType="com.nsu.pojo.SysPermission">
+    <select id="selectListByPath" resultMap="SysPermissionMap">
     select p.*
     from sys_permission as p
     left join sys_request_path_permission_relation as srp

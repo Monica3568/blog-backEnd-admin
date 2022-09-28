@@ -10,5 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SysUserMapper {
     SysUser selectUserByUsername(String username);
-    void update(Integer id);
+    void update(SysUser sysUser);
 }

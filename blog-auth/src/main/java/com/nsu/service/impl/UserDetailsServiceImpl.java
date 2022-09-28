@@ -2,6 +2,7 @@ package com.nsu.service.impl;
 
 import com.nsu.mapper.SysPermissionMapper;
 import com.nsu.mapper.SysUserMapper;
+import com.nsu.pojo.UserDetail;
 import org.springframework.security.core.userdetails.User;
 import com.nsu.pojo.SysPermission;
 import com.nsu.pojo.SysUser;
@@ -45,7 +46,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             List<SysPermission> sysPermissions = permissionMapper.selectListByUser(sysUser.getId());
             // 声明用户授权
             for (SysPermission sysPermission : sysPermissions) {
-                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(sysPermission.getPermissionCode());
+                String permissionCode = sysPermission.getPermissionCode();
+                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permissionCode);
                 grantedAuthorities.add(grantedAuthority);
             }
 //
@@ -54,9 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //                grantedAuthorities.add(grantedAuthority);
 //            });
         }
-        return new User(sysUser.getUsername(), sysUser.getPassword(),
-                sysUser.getEnabled(), sysUser.getNotExpired(), sysUser.getCredentialsNotExpired(),
-                sysUser.getAccountNotLocked(), grantedAuthorities);
+        return new UserDetail(sysUser,grantedAuthorities);
     }
 
 }

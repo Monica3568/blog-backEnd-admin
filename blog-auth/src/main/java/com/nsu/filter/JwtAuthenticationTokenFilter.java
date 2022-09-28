@@ -36,7 +36,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 获取当请求头中的token，其实这里多余，完全可以使用HttpServletRequest来获取
         String authToken = httpServletRequest.getHeader("UserToken");
 
-        // 获取到当前用户的account
+        // 获取到当前用户的username
         String account = JwtUtils.getMemberAccountByJwtToken(httpServletRequest);
 
         System.out.println("自定义JWT过滤器获得用户名为"+account);

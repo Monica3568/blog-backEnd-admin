@@ -15,7 +15,6 @@ public class LoginController {
 
     @PostMapping("/login")
     public Response loginUser(String username, String password) {
-        System.out.println("我是卢豪的爹");
         //TODO 这里登录不用写业务   全部交给springSecurity处理
         return new Response().success();
     }
