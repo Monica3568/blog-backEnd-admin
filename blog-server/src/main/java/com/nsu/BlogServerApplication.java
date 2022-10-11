@@ -3,12 +3,12 @@ package com.nsu;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @Author Monica
- * @Date 2022/9/28 16:33
+ * @Date 2022/10/9 9:34
  **/
+
 @SpringBootApplication
 @MapperScan("com.nsu.mapper")
 public class BlogServerApplication {

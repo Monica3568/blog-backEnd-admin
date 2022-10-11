@@ -2,27 +2,91 @@ package com.nsu.pojo;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 /**
  * @Author Monica
- * @Date 2022/9/28 9:48
+ * @Date 2022/9/30 11:44
  **/
 @Data
-public class UserDetail extends User {
-    /**
-     * 我们自己的用户实体对象，要调取用户信息时直接获取这个实体对象。（这里我就不写get/set方法了）
-     */
+public class UserDetail implements UserDetails {
+
+    private static final long serialVersionUID = 1L;
+
     private SysUser sysUser;
+    private List<SysRole> roleInfoList;
+    private Collection<? extends GrantedAuthority> grantedAuthorities;
+    private List<String> roles;
 
-    public UserDetail(SysUser sysUser, Collection<? extends GrantedAuthority> authorities) {
-        // 必须调用父类的构造方法，以初始化用户名、密码、权限
-        super(sysUser.getUsername(), sysUser.getPassword(), authorities);
-        this.sysUser = sysUser;
+    public Integer getUserId() {
+        return this.sysUser.getId();
     }
-}
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (grantedAuthorities != null) return this.grantedAuthorities;
+        List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
+        List<String> authorities = new ArrayList<>();
+        roleInfoList.forEach(role -> {
+            authorities.add(role.getRoleCode());
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleCode()));
+        });
+        this.grantedAuthorities = grantedAuthorities;
+        this.roles = authorities;
+        return this.grantedAuthorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.sysUser.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.sysUser.getUsername();
+    }
+
+    /**
+     * 账户是否没过期
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    /**
+     * 账户是否没被锁定
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    /**
+     * 账户凭据是否没过期
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    /**
+     * 账户是否启用
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }}

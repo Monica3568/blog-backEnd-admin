@@ -13,10 +13,22 @@ spring:
     port: 6379
     password: 5201314...
     host: 124.223.14.20
+    database: 0
 
-mybatis:
-  type-aliases-package: com.nsu.pojo
-  mapper-locations: classpath:mapper/*.xml
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 删除前
+    logic-not-delete-value: 1
+    # 删除后
+    logic-delete-value: 0
+
 logging:
   level:
-    root: debug
+    root: info
