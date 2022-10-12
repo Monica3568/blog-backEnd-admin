@@ -4,7 +4,6 @@ import com.nsu.comm.Response;
 import com.nsu.constants.Constants;
 import com.nsu.entity.SysLoginUser;
 import com.nsu.service.SysLoginService;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,10 +26,10 @@ public class SysLoginController {
     private SysLoginService loginService;
 
     @PostMapping("/login")
-    public Response login(@Validated @RequestBody SysLoginUser loginUser){
+    public Response login(String username,String password){
         Map<String, Object> map = new HashMap<>();
         // 生成令牌
-        String token = loginService.login(loginUser.getUserName(),loginUser.getPassword());
+        String token = loginService.login(username,password);
         map.put(Constants.TOKEN,token);
         return new Response().success(map);
     }

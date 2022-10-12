@@ -1,6 +1,12 @@
 server:
   port: 8424
 spring:
+#  # 资源信息
+#  messages:
+#    # 国际化资源文件路径
+#    basename: i18n/messages
+#    encoding: UTF-8
+#    cache-duration: 3600
   # redis配置
   redis:
     # Redis数据库索引（默认为0）
@@ -32,6 +38,8 @@ spring:
     multipart:
       max-file-size: 2MB
       max-request-size: 5MB
+  messages:
+    basename: i18n/messages
 mybatis-plus:
   configuration:
     # 日志
